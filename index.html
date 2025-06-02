@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheWealthBuddy - Your Partner in Algorithmic Trading & Financial Freedom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 102, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff6600;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6600;
+        }
+        
+        .cta-nav {
+            background: #ff6600;
+            color: #000;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cta-nav:hover {
+            background: #ff8833;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 102, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 102, 0, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(45deg, #ff6600, #ff9933);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.4s ease;
+        }
+        
+        .btn-primary {
+            background: #ff6600;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: #ff8833;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #ff6600;
+            color: #ff6600;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: #ff6600;
+            color: #000;
+        }
+        
+        /* Animated Background */
+        .trading-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.1;
+        }
+        
+        .line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #ff6600, transparent);
+            animation: fall 3s infinite;
+        }
+        
+        .line:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .line:nth-child(2) { left: 30%; animation-delay: 0.5s; }
+        .line:nth-child(3) { left: 50%; animation-delay: 1s; }
+        .line:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+        .line:nth-child(5) { left: 90%; animation-delay: 2s; }
+        
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: #0a0a0a;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ff6600;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 102, 0, 0.05);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6600;
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #ff6600;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        /* Algo Trading Section */
+        .algo-section {
+            padding: 5rem 5%;
+            background: #000;
+            position: relative;
+        }
+        
+        .algo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .algo-content h2 {
+            font-size: 2.5rem;
+            color: #ff6600;
+            margin-bottom: 2rem;
+        }
+        
+        .algo-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .algo-features li {
+            padding: 0.5rem 0;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+        }
+        
+        .algo-features li:before {
+            content: "▶";
+            color: #ff6600;
+            margin-right: 1rem;
+        }
+        
+        .algo-visual {
+            position: relative;
+            height: 400px;
+            background: rgba(255, 102, 0, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-animation {
+            width: 80%;
+            height: 60%;
+            position: relative;
+        }
+        
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 10%;
+            background: linear-gradient(to top, #ff6600, #ff9933);
+            animation: grow 2s infinite ease-in-out;
+        }
+        
+        .chart-bar:nth-child(1) { left: 0%; height: 60%; animation-delay: 0s; }
+        .chart-bar:nth-child(2) { left: 15%; height: 80%; animation-delay: 0.2s; }
+        .chart-bar:nth-child(3) { left: 30%; height: 45%; animation-delay: 0.4s; }
+        .chart-bar:nth-child(4) { left: 45%; height: 90%; animation-delay: 0.6s; }
+        .chart-bar:nth-child(5) { left: 60%; height: 70%; animation-delay: 0.8s; }
+        .chart-bar:nth-child(6) { left: 75%; height: 85%; animation-delay: 1s; }
+        .chart-bar:nth-child(7) { left: 90%; height: 55%; animation-delay: 1.2s; }
+        
+        @keyframes grow {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.2); }
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: #0a0a0a;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 102, 0, 0.05);
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            color: #ff6600;
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(255, 102, 0, 0.05) 100%);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            color: #ff6600;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+        
+        .phone-number {
+            display: inline-block;
+            font-size: 2rem;
+            color: #ff6600;
+            text-decoration: none;
+            margin-bottom: 3rem;
+            transition: all 0.3s;
+            border: 2px solid #ff6600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+        }
+        
+        .phone-number:hover {
+            background: #ff6600;
+            color: #000;
+            transform: scale(1.05);
+        }
+        
+        .age-ctas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .age-cta {
+            background: rgba(255, 102, 0, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+        }
+        
+        .age-cta h3 {
+            color: #ff6600;
+            margin-bottom: 1rem;
+        }
+        
+        .age-cta p {
+            color: #ccc;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 102, 0, 0.3);
+        }
+        
+        footer a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px 10px rgba(255, 102, 0, 0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .algo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .algo-visual {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="https://www.thewealthbuddy.com/assets/images/logo.webp" class="logo">
+                <div class="logo-icon">WB</div>
+                TheWealthBuddy
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Services</a></li>
+                <li><a href="#algo">Algo Trading</a></li>
+                <li><a href="#testimonials">Success Stories</a></li>
+                <li><a href="#contact" class="cta-nav">Start Today</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="trading-lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Your Journey to Financial Freedom Starts Here</h1>
+            <p class="hero-subtitle">Experience the power of algorithmic trading combined with personalized wealth advisory services</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Get Free Consultation</a>
+                <a href="#algo" class="btn-secondary">Discover Algo Trading</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2 class="section-title">Comprehensive Wealth Solutions</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Algorithmic Trading</h3>
+                    <p>Advanced algorithmic trading strategies that work 24/7 to maximize your returns while you sleep</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Portfolio Optimization</h3>
+                    <p>Data-driven portfolio management tailored to your risk profile and financial goals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Goal-Based Planning</h3>
+                    <p>Structured financial planning to achieve your dreams - from retirement to wealth creation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡</div>
+                    <h3>Risk Management</h3>
+                    <p>Sophisticated risk assessment and mitigation strategies to protect your wealth</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Tax Optimization</h3>
+                    <p>Smart tax planning strategies to maximize your post-tax returns legally</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Financial Education</h3>
+                    <p>Regular workshops and personalized sessions to enhance your financial literacy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Algo Trading Section -->
+    <section class="algo-section" id="algo">
+        <div class="algo-container">
+            <div class="algo-content">
+                <h2>Revolutionary Algorithmic Trading</h2>
+                <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 2rem;">
+                    Our proprietary algorithms analyze millions of data points in real-time, executing trades with precision that human traders simply cannot match.
+                </p>
+                <ul class="algo-features">
+                    <li>24/7 automated trading across global markets</li>
+                    <li>Emotion-free decision making</li>
+                    <li>Backtested strategies with proven results</li>
+                    <li>Real-time risk monitoring and adjustment</li>
+                    <li>Average returns beating traditional investments</li>
+                </ul>
+                <a href="#contact" class="btn-primary">Start Algo Trading</a>
+            </div>
+            <div class="algo-visual">
+                <div class="chart-animation">
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="features-container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The algo trading system has transformed my portfolio. I'm seeing consistent returns without the stress of day trading."</p>
+                <p class="testimonial-author">- Rajesh Kumar, 45, IT Professional</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Finally found advisors who understand both traditional investing and cutting-edge technology. My retirement planning is on track!"</p>
+                <p class="testimonial-author">- Priya Sharma, 52, Business Owner</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Started investing at 28 with TheWealthBuddy. Their guidance helped me build a corpus I never thought possible."</p>
+                <p class="testimonial-author">- Amit Patel, 32, Marketing Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Ready to Achieve Financial Freedom?</h2>
+        <p>Take the first step towards your wealthy future today!</p>
+        <a href="tel:9799420844" class="phone-number">📞 9799420844</a>
+        
+        <div class="age-ctas">
+            <div class="age-cta">
+                <h3>Ages 25-35</h3>
+                <p>Start early, retire wealthy. Build your first crore with smart investments.</p>
+            </div>
+            <div class="age-cta">
+                <h3>Ages 36-45</h3>
+                <p>Accelerate wealth creation. Secure your family's future with proven strategies.</p>
+            </div>
+            <div class="age-cta">
+                <h3>Ages 46-60</h3>
+                <p>Maximize retirement corpus. Ensure financial independence for your golden years.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 TheWealthBuddy. All rights reserved. | <a href="https://thewealthbuddy.com">thewealthbuddy.com</a></p>
+        <p style="margin-top: 1rem; color: #666;">Specializing in Algorithmic Trading & Wealth Advisory Services</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards
+        document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
